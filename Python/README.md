@@ -41,9 +41,10 @@ Simulates transcription rate as a function of inducer concentration **I**, for d
 
 Model:
 
-\[
+$$
 \beta \left(\frac{K_d}{K_d + X_T} + \frac{X_T}{K_d + X_T} \cdot \frac{I}{K_i + I}\right)
-\]
+$$
+
 
 **Parameters:**
 - Kd = 100 nM  
