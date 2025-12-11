@@ -108,13 +108,13 @@ Models three interacting components:
 
 ODE system:
 
-\[
+$$
 \begin{aligned}
 dA/dt &= tran - phos + dephos - kdA \\
 dAp/dt &= phos - dephos - kdAp \\
 dK/dt &= tran - kdK
 \end{aligned}
-\]
+$$
 
 Where:  
 - *tran* = ta*A + ti  (or ta*A_max0 + ti with feedback)  
