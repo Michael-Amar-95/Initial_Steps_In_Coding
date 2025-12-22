@@ -1,0 +1,265 @@
+---
+title: "R.test23A"
+output: html_document
+editor_options: 
+chunk_output_type: console
+---
+*Instructions:*
+Please read all of the instructions before you start solving.
+
+* The exam will be 4 hours long. Those who have extra time will receive it accordingly. 
+
+* Code that throws an error will be graded 0. your code will be evaluated first by its output, and then by efficiency and clarity. 
+
+* In every section you can assume that the output of the last section's code is correct, in order to use it in your code.
+
+* The exam is built of 3 questions, 2 first question are 30 points each, third question is 40. 
+
+* Don't put a path inside your code, use setwd(r"(<your_path>)") to a test path on the PC.
+
+* Some of the questions have skeleton code, you can choose to use it or not. 
+
+* Finally, send your solution in RMD and HTML (using Knit) formats in the tests server. 
+
+* The name of your files should be <your_ID>_R_A.Rmd and <your_ID>_R_A.HTML
+
+Good luck!!!
+
+## question 1: Analyzing Air Quality Data
+The "airquality" dataset in R provides information on air quality measurements taken in New York City
+during the months of May to September in 1973. 
+It is a built-in dataset that comes with R, and it can be loaded using the data() function. 
+Here's a summary of the "airquality" dataset:
+
+Description: The "airquality" dataset contains air quality measurements collected at
+the Franklin Avenue Solar Radiation Monitoring Station in New York City.
+
+Number of rows and columns: The dataset consists of 153 rows and 6 columns.
+
+Columns:
+Ozone: Represents the ozone concentration in parts per billion (ppb).
+Solar.R: Represents the solar radiation in langley units (Langleys).
+Wind: Represents the wind speed in miles per hour (mph).
+Temp: Represents the air temperature in degrees Fahrenheit (°F).
+Month: Represents the month (May, June, July, August, or September).
+Day: Represents the day of the month (1 to 31).
+
+The dataset contains missing values (NA) for some observations, which need to be handled during data analysis.
+
+Load the "airquality" dataset into R.
+```{r, message=FALSE, warning=FALSE}
+# install.packages()
+library(ggplot2)
+library(tidyverse)
+data(airquality)
+```
+### 1.a) 
+Replace all missing values (NA) in each column with the mean value of that column.
+Notice - Don't use $ to refer to a column, use [[]] instead
+```{r, message=FALSE, warning=FALSE}
+for (col in names(airquality)) {
+  column_mean <- mean(airquality[[col]], na.rm = TRUE)
+  airquality[[col]][is.na(airquality[[col]])] <- column_mean
+}
+```
+
+### 1.b) 
+Create a new column called "Wind_Category" which contains the values of three categories: "Low," "Moderate," or "High," based on the Wind speed being less than 10, between 10 and 15 (inclusive), or greater than 15, respectively.
+```{r, message=FALSE, warning=FALSE}
+# option 1
+airquality$Wind_Category <- NA
+airquality[airquality$Wind<10, 'Wind_Category'] <- 'Low'
+airquality[(airquality$Wind>10 & airquality$Wind<16), 'Wind_Category'] <- 'Moderate'
+airquality[airquality$Wind>15, 'Wind_Category'] <- 'High'
+print(airquality)
+
+# option 2
+airquality$Wind_Category <- ifelse(airquality$Wind < 10, 'Low',
+                            ifelse(airquality$Wind > 10 & airquality$Wind < 16, 'Moderate', 'High'))
+
+```
+
+### 1.c) 
+Calculate the average Wind speed for each month and create a new data frame with this information called average_wind_speed.
+```{r, message=FALSE, warning=FALSE}
+average_wind_speed <- airquality %>%
+  group_by(Month) %>%
+  summarise(Average_Wind = mean(Wind))
+
+print(average_wind_speed)
+```
+
+### 1.d) 
+Use ggplot2 to create a histogram showing the distribution of Wind speeds.
+show each "Wind_Category" with a different color.
+```{r, message=FALSE, warning=FALSE}
+ggplot(airquality, aes(x = Wind, fill = Wind_Category)) +
+  geom_histogram(binwidth = 1, position = "dodge") +
+  labs(x = "Wind Speed", y = "Frequency", title = "Wind Speed Distribution by Category") +
+  scale_fill_manual(values = c("blue", "green", "orange"))
+```
+
+## question 2: prime factorization
+### question 2.a:
+
+Prime factorization is the process of decomposing a number into its prime divisors. 
+Write an R function named prime_factorization that takes a positive integer 'num' as its argument,
+and returns a vector containing the prime divisors of the input number in ascending order.
+
+* you can assume valid input 
+
+for example: 
+input: prime_factorization(80)
+80 = 2 * 2 * 2 * 2 * 5
+intput 80 --> output: c(2,2,2,2,5)
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+prime_factorization <- function(num) {
+  factors <- c()
+  divisor <- 2
+  while (num > 1) {
+    while (num %% divisor == 0) {
+      factors <- c(factors, divisor)
+      num <- num / divisor
+    }
+    divisor <- divisor + 1
+  }
+  return(factors)
+}
+
+prime_factorization(80)
+prime_factorization(1259)
+prime_factorization(21)
+prime_factorization(4580)
+```
+
+### question 2.b:
+Write an R function named unique_prime_factors that takes a positive integer num as its argument and returns a vector containing the unique prime factors of the input number in ascending order.
+for example: 
+input: prime_factorization(80)
+80 = 2 * 2 * 2 * 2 * 5
+intput 80 --> output: c(2,5)
+
+* use the function from the previous section. 
+* you can assume that it has correct output when using it.
+
+```{r, message=FALSE, warning=FALSE}
+unique_prime_factors <- function(num) {
+  return(unique(prime_factorization(num)))
+}
+unique_prime_factors(80)
+unique_prime_factors(1259)
+unique_prime_factors(4580)
+```
+
+### question 2.c:
+Write an R function named common_prime_divisors, that takes two positive integers num1 and num2 as its arguments,
+and returns a vector containing the common prime divisors of both numbers in ascending order.
+If there are no common prime factors, return the string: "No common divisors between <num1> and <num2>".
+for example: 
+input: common_prime_factors(4, 8)
+output:  2
+
+example 2:
+input: common_prime_factors(4, 7)
+output:  "No common divisors between 4 and 7"
+
+* use the function from the previous section. 
+* you can assume that it has correct output when using it.
+
+```{r, message=FALSE, warning=FALSE}
+common_prime_factors <- function(num1, num2) {
+  factors1 <- unique_prime_factors(num1)
+  factors2 <- unique_prime_factors(num2)
+  common_factors <- intersect(factors1, factors2)
+  if(common_factors %>% length() == 0){
+    return(paste("No common divisors between",num1,"and",num2))
+  }else{
+    return(common_factors)
+  }
+}
+
+
+common_prime_factors(4, 540)
+common_prime_factors(9, 21)              
+common_prime_factors(7, 13) #"No common divisors between 7 and 13"
+common_prime_factors(478956, 1458)
+```
+
+### Question 3
+Read the data frame movie_statistic_dataset2.tsv.
+This dataset provides comprehensive movie statistics compiled from multiple sources,
+including Wikipedia, The Numbers, and IMDb.
+
+## 3a
+Find the 10 highest rated movies in the data.
+Make a bar plot showing the total number of movies made by the directors of the top 10 highest rated movies
+Example: 
+X, Y and Z are the directors that made the top 10 highest rated movies, 
+the bar plot will have X, Y and Z as the X-axis.
+The Y axis will be the number of movies each of them made.
+Is there any director with a uniquely different number of movies?
+
+*Yes, Steve Kopera has only one movie while the others have minimum 4.
+```{r}
+(r"(C:/Users/Michael/Desktop/TAU/קורסים/שנה ב/סמסטר א/R/תרגילי בית)")
+library(tidyverse)  
+
+movie_stats <- read.delim("movie_statistic_dataset2.tsv", sep = "\t",
+                          header = T, quote="\"", check.names=FALSE) 
+
+movie_stats_Top10 <- movie_stats %>% arrange(desc(movie_averageRating)) %>% head(10)
+movie_stats_Top10_Dir <- movie_stats[which(movie_stats$director_name %in% movie_stats_Top10$director_name),]
+
+ggplot(movie_stats_Top10_Dir) + 
+  geom_bar(mapping = aes(x = director_name)) +
+  theme(axis.text.x = element_text(angle=45, vjust=0.6)) + # angles the text
+  scale_y_discrete(limits = seq(0,10,2))
+```
+
+## 3b
+Use only the four columns "approval_Index", "production_budget", "domestic_gross" and "worldwide_gross"
+in order to create a PCA of the movies those top directors created.
+Do you see any commonalities or groups within the PCA?
+
+*There are no commonalities or groups within the PCA
+```{r}
+PCA_DF <- movie_stats_Top10_Dir[,c(11:14)]
+
+res.pca <- prcomp(PCA_DF, scale = TRUE)
+
+PCA_res <- as.data.frame(res.pca$x)
+PCA_res$Director <- movie_stats_Top10_Dir$director_name
+PCA_res$label <- movie_stats_Top10_Dir$movie_title
+
+ggplot(PCA_res, aes(x = PC1,y = PC2, color = Director))+
+  theme_classic() +  
+  geom_point(size=5)
+```
+
+## 3c
+Write a function that tests whether the movie_averageRating,
+correlates with worldwide_gross (in the original table).
+Use a proper correlation to the current scenario, within the function.
+The function receives two vectors, and returns a text line,
+declaring the value of the correlation coefficient.
+Do they correlate highly?
+
+*No they don't correlate.
+```{r}
+
+correlate <- function(rating, gross){ 
+  norm_rating <- shapiro.test(rating)
+  norm_gross <- shapiro.test(gross)
+  
+  if(norm_rating$p.value > 0.05 & norm_gross$p.value > 0.05){
+    cor <- cor.test(rating, gross, method = "pearson") 
+  }else{
+    cor <- cor.test(rating, gross, method = "spearman") 
+  }
+  return(paste("The correlation coefficient is",cor$estimate))
+}
+
+correlate(movie_stats$movie_averageRating, movie_stats$worldwide_gross)
+```
+

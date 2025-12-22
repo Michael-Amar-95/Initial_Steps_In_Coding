@@ -1,0 +1,289 @@
+---
+title: "R_test_2024_A"
+author: "Shai Dulberg & Michael Monsonego"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+```{r}
+library(ggplot2)
+library(tidyverse)
+```
+## question 1: vector manipulation
+### 1.a) 
+A cumulative sum is the running total of a sequence of numbers, where each element in the sequence is replaced by the sum of all preceding elements, including itself.
+Write an R function named cumulative_sum that takes a numeric vector as input and returns a vector in which each element is the cumulative sum of the input vector's values up to its corresponding index.
+For example:
+input: cumulative_sum(c(1, 2, 3, 4))
+output: c(1, 3, 6, 10)
+```{r}
+# This vector return the cumulative sum of a numeric vector
+cumulative_sum <- function(x) {
+  if (!is.numeric(x)) {
+    stop("Input must be a numeric vector")
+  }
+
+  # Initialize a numeric vector of the same length
+  cum_sum <- numeric(length(x))  # Initialize a numeric vector of the same length
+  # Keep the first element because is the same as input
+  cum_sum[1] <- x[1] 
+  
+  # Check if the vector contain only one args - if it does, than return it
+  if (length(x) == 1){
+    # Return the cumulative sum
+    return (cum_sum)
+  }
+
+  # O.w
+  for (i in 2:length(x)) {
+    # Add the current element to the previous cumulative sum
+    cum_sum[i] <- cum_sum[i - 1] + x[i]  
+  }
+
+  # Return the cumulative sum
+  return(cum_sum)
+}
+
+# An example
+result <- cumulative_sum(c(1, 2, 3, 4))
+print(result)
+
+```
+### 1.b) 
+Write an R function named count_occurrences that takes a vector and an element as arguments, 
+and returns how many times the element appears in the vector. 
+For example:
+input: count_occurrences(c(1, 2, 3, 1, 1, 2), 1)
+output: 3
+```{r}
+# This function takes a vector and an element as arguments, 
+# and returns how many times the element appears in the vector.
+count_occurrences <- function(vec, element) {
+  if (!is.vector(vec)) {
+    if (length(vec) == 0){
+      return ("Its an empty vector so the answer would be: 0")
+    }
+    stop("First argument must be a vector")
+  }
+
+  # A counter to count the appearance on element in vector
+  count <- 0  
+
+  # Iterate over each element in the vector
+  for (i in vec) {
+    if (i == element) {
+      # Increment the counter if the element matches
+      count <- count + 1  
+    }
+  }
+
+  # Return the final count
+  return(count)  
+}
+
+# An example
+result <- count_occurrences(c(1, 2, 3, 1, 1, 2),1)
+print(result)
+```
+
+### 1.c) 
+Write an R function named rotate_vector that takes a numeric vector and an integer n as arguments, 
+and returns the vector rotated to the right by n index's. Think of it as a circular vector(see example).
+You can assume the input n is a positive number, that is not larger than the length of the vector. 
+For example:
+input: rotate_vector(c(1, 2, 3, 4, 5), 2)
+output: c(4, 5, 1, 2, 3)
+```{r}
+
+# This function takes a numeric vector and an integer n as arguments, 
+# and returns the vector rotated to the right by n index's. 
+rotate_vector <- function(vec, n) {
+  
+  # Check if the first element is indeed a numeric vector
+  if (!is.numeric(vec)) {
+    stop("First argument must be an unempty numeric vector")
+  }
+  
+  # Check if n is a positive integer
+  if (n <= 0 || n > length(vec) || n != floor(n)) {
+    stop("Second argument must be a positive integer not larger than the length of the vector")
+  }
+  
+  # Calculate the rotation
+  # Check if n is equal to the length of the vector
+  n <- n %% length(vec)  
+  return(c(tail(vec, n), head(vec, length(vec) - n)))
+}
+
+# An example
+result <- rotate_vector(c(1, 2, 3, 4, 5), 2)
+print(result) 
+```
+## question 2: data frame manipulation
+The "iris" dataset is a built-in dataset in R that provides measurements of different attributes of iris flowers. 
+The dataset contains 150 observations(rows) and 5 columns.
+The "iris" dataset contains measurements of iris flowers from three species: setosa, versicolor, and virginica.
+Columns:
+Sepal.Length: The length of the sepal (in cm).
+Sepal.Width: The width of the sepal (in cm).
+Petal.Length: The length of the petal (in cm).
+Petal.Width: The width of the petal (in cm).
+Species: The species of the iris flower (setosa, versicolor, or virginica).
+Load the "iris" dataset into R:
+```{r}
+data(iris)
+```
+### 2.a) 
+Add a new column called Sepal.Area that contains the product(multiplication) of Sepal.Length and Sepal.Width for each flower.
+```{r}
+# Add a new column called Sepal.Area
+iris$Sepal.Area <- iris$Sepal.Length * iris$Sepal.Width
+```
+### 2.b) 
+Add a new column called Long_Petal which is TRUE if Petal.Length is greater than 5, and FALSE otherwise. Then, calculate the number of flowers with Long_Petal == TRUE for each species.
+```{r}
+library(dplyr)
+
+# Add a new column called Long_Petal which contain True if Petal.Length is greater than 5 and False o.w.  
+iris$Long_Petal <- iris$Petal.Length > 5
+
+# Calculate the number of flowers with Long_Petal == TRUE for each species and save it in a data frame. 
+long_petal_count <- iris %>%
+  group_by(Species) %>%
+  summarize(Count = sum(Long_Petal))
+
+print(long_petal_count)
+```
+### 2.c) 
+Calculate the average Sepal.Area for each species and save it to a new data frame named average_sepal_area.
+```{r}
+# Calculate the average Sepal.Area for each species and save it in a new data frame. 
+average_sepal_area <- iris %>%
+  group_by(Species) %>%
+  summarize(Average_Sepal_Area = mean(Sepal.Area))
+
+print(average_sepal_area)
+```
+## Question 3
+Read The_Big_Bang_Theory.csv, in it you have details about all episodes of the hit TV show "The Big Bang Theory".  
+Each row is an episode in the show.  
+Some  of the columns in the table are:  
+* No.overall: The number of the episode in the show  
+* Directed_by: Who directed the episode  
+* U.S._viewers_millions: Number of viewers in millions  
+* Season: The season number of the episode.
+### 3a
+Create a percent stacked bar plot of directors of all seasons.  
+Each bar should represent all of the directors who worked on that season.  
+For example, if two directors worked on season 1 equally, the bar should be 50% each.  
+Make sure x axis shows the number of each season, no more (0, 2.5, 12.5 etc), no less (missing numbers),  
+**Don't use scale_x_discrete() and such manual ways of setting X axis**
+Does it seem like there is a dominant director to the show?
+```{r warning=FALSE, warning=FALSE}
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+
+(r"(C:/Users/Michael/Desktop/TAU/קורסים/שנה ב/סמסטר א/R/תרגילי בית)")
+
+# Read the CSV file
+The_Big_Bang_Theory_data_frame <- read.csv("The_Big_Bang_Theory.csv")
+
+# Group by Season and Director, and count the number of episodes directed
+director_season <- The_Big_Bang_Theory_data_frame %>%
+  group_by(Season, Directed_by) %>%
+  summarise(count = n()) %>%
+  ungroup()
+
+# Calculate the percentage of episodes directed by each director per season
+director_season <- director_season %>%
+  group_by(Season) %>%
+  mutate(percentage = count / sum(count) * 100)
+
+# Create a percent-stacked bar plot
+ggplot(director_season, aes(x = as.factor(Season), y = percentage, fill = Directed_by)) +
+  geom_bar(stat = "identity", position = "fill") +
+  labs(x = "Season", y = "Percentage of Episodes", title = "Directors of The Big Bang Theory by Season") +
+  scale_y_continuous(labels = scales::percent) +
+  theme_minimal()
+
+print("Yes :) Its seems like Mark Cendrowski is a great director which produce good episodes (or not but either way is the most dominant director).")
+```
+### 3b
+Create a vector for all seasons.  
+The value for each season should be:  
+* The sum of U.S. viewers of episodes directed only by the top director of that season.  
+* The season number is the location of the value in the vector.  
+Example: In season 2, Mark Cendrowski directed 22 episodes and Peter Chakos only 1.  
+Hence, the second location in the vector should be the sum of views of those 22 episodes directed by Mark Cendrowski.  
+Did the viewership of the top directors change over the years?  
+If it did, in what manner?  
+```{r warning=FALSE, warning=FALSE}
+library(dplyr)
+
+# Read the CSV file
+The_Big_Bang_Theory_data_frame <- read.csv("The_Big_Bang_Theory.csv")
+
+# Initialize the list for storing viewership sums
+BB_list <- c()
+
+# Loop through each season
+for (season_num in The_Big_Bang_Theory_data_frame$Season %>% unique()) {
+
+  # Filter the data for the current season
+  season_data <- The_Big_Bang_Theory_data_frame %>% filter(Season == season_num)
+  
+  # Find the top director based on number of episodes directed
+  top_director <- season_data %>%
+    group_by(Directed_by) %>%
+    summarise(num_episodes = n()) %>%
+    arrange(desc(num_episodes)) %>%
+    slice(1) %>% # Get the top director (first in sorted list)
+    pull(Directed_by)
+  
+  # Sum the U.S. viewers for episodes directed by the top director in the current season
+  total_views <- season_data %>%
+    filter(Directed_by == top_director) %>%
+    summarise(total_viewers = sum(U.S._viewers_millions)) %>%
+    pull(total_viewers)
+  
+  # Append the total viewership for the season to the BB_list
+  BB_list <- append(BB_list, total_views)
+}
+
+
+# Plot the viewership of the top director per season
+plot(1:length(BB_list), BB_list, type = "b", xlab = "Season", ylab = "Total Viewership (Millions)",
+     main = "Viewership of Top Directors by Season")
+
+BB_list
+
+print("Yes! The viewership of the top directors change over the years. In the first 9 years the viewership increase (in the four season thete was some decreasing to compare to the third season) until it reach to the top of 373.9M views. After it, it start to decrease to 278.38M viewers. The minimum mount of viewrs apper in the first season with only 106.78M viewrs. ")
+
+```
+### 3c
+To observe the success of the show over the years,  
+plot it's viewership over the seasons where X axis is seasons, and Y axis is sum of views per season.  
+The plot should be a dot plot with a smoothed line of method "loess" over it.  
+What can you say about the show's viewership over the years?  
+```{r warning=FALSE, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+
+# Read the CSV file
+The_Big_Bang_Theory_data_frame <- read.csv("The_Big_Bang_Theory.csv")
+
+# Calculate the sum of viewers per season
+season_viewership <- The_Big_Bang_Theory_data_frame %>%
+  group_by(Season) %>%
+  summarise(total_viewers = sum(U.S._viewers_millions))
+
+# Create the plot
+ggplot(season_viewership, aes(x = Season, y = total_viewers)) +
+  geom_point(size = 3, color = "blue") +  # Dot plot for each season
+  geom_smooth(method = "loess", color = "red", se = FALSE) +  # Smoothed line using loess
+  labs(x = "Season", y = "Total Viewership (Millions)", title = "Viewership of The Big Bang Theory Over the Years") +
+  theme_minimal()
+
+print("Its seems like the show reach his top in the 9 season and after it start to decreae. Before season 9, there was a little decrease between season 3 and 4 but then it continue to increae. Intresting to see is that the gradient is in increasing magnitude to season 8 but then it start to decreae. So in some way the show reach is top potential after season 8")
+```

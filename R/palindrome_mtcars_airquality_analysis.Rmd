@@ -1,0 +1,239 @@
+---
+title: "moed_b"
+author: "R course"
+output: html_document
+---
+*Instructions:*
+Please read all of the instructions before you start solving.
+
+* The exam will be 4 hours long. Those who have extra time will receive it accordingly. 
+
+* Code that throws an error will be graded 0. your code will be evaluated first by its output, and then by efficiency and clarity. 
+
+* In every section you can assume that the output of the last section's code is correct, in order to use it in your code.
+
+* The exam is built of 3 questions, 2 first question are 30 points each, third question is 40. 
+
+* Don't put a path inside your code, use setwd(r"(<your_path>)") to a test path on the PC.
+
+* Some of the questions have skeleton code, you can choose to use it or not. 
+
+* Finally, send your solution in RMD and HTML (using Knit) formats in the tests server. 
+
+* The name of your files should be <your_ID>_R_A.Rmd and <your_ID>_R_A.HTML
+
+Good luck!!!
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+```
+
+
+Question 1: Palindrome Checker 
+
+A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward (ignoring spaces, punctuation, and capitalization). 
+For example, "racecar" and "A man, a plan, a canal, Panama!" are palindromes.
+
+Write an R function named is_palindrome that takes a character vector text as its argument and returns TRUE if it is a palindrome and FALSE otherwise.
+
+For this question, you can assume that the input text contains only letters (both uppercase and lowercase), spaces, and punctuation marks. The function should ignore spaces, punctuation, and capitalization when checking for palindromes.
+
+* pay attention to different cases in odd and even length of input
+
+Solution 1:
+```{r setup, include=FALSE}
+is_palindrom <- function(input){
+  s_input <- unlist(strsplit(input,""))
+  only_chars <- s_input[s_input %in% letters]
+  first_half <- only_chars[1:(length(only_chars)/2)]
+  second_half <- only_chars[((length(only_chars)/2)+1):(length(only_chars)+1)]
+  rev_second_half <- rev(second_half)
+  # check only for first_half length for odd case(avoid middle letter)
+  for (i in length(first_half)){
+    if (first_half[i]!=rev_second_half[i]) {return (F)}
+   } 
+  return (T)
+  }
+input <- "race, !@$ , . 234 , .. car"
+
+is_palindrom(input)
+is_palindrome("A man, a plan, a canal, Panama!")
+```
+
+## question 2 : 
+
+Load the "mtcars" dataset into R.
+```{r}
+# Load the "mtcars" dataset
+data(mtcars)
+```
+overview of the dataset:
+The "mtcars" dataset contains data on different car models, including their specifications and performance metrics. 
+It's often used for various types of analysis and is a built-in dataset that comes with R.
+
+Number of Rows and Columns:
+The dataset consists of 32 rows and 11 columns.
+
+Columns (Variables):
+mpg: Miles per gallon (mpg) represents the fuel efficiency of the car, indicating how many miles the car can travel per gallon of fuel.
+cyl: The number of cylinders in the engine.
+disp: Engine displacement in cubic inches, which measures the total volume of all the cylinders.
+hp: Horsepower (hp) is a measure of the engine's power.
+drat: The rear axle ratio, which affects the car's acceleration.
+wt: The weight of the car in thousands of pounds.
+qsec: The time in seconds it takes for the car to accelerate from 0 to 60 miles per hour (sec).
+vs: A binary variable indicating the engine type (0 for V-shaped and 1 for straight).
+am: A binary variable indicating the transmission type (0 for automatic and 1 for manual).
+gear: The number of forward gears in the transmission.
+carb: The number of carburetors in the engine.
+
+# Display the first 6 rows of the dataset to get an overview of its contents.
+head(mtcars, 6)
+
+a) Use ggplot2 to create a scatter plot to visualize the relationship between the number of cylinders (cyl) and miles per gallon (mpg).
+use facet_grid to show this plot for every gear(3,4,5)
+```{r}
+# Create a scatter plot
+ggplot(mtcars, aes(x = factor(cyl), y = mpg, col=factor(cyl))) +
+  geom_point() +
+  facet_grid("gear")
+  labs(x = "Number of Cylinders", y = "Miles per Gallon", title = "Scatter Plot of Cylinders vs. MPG")
+high_hp_cars$cyl
+```
+
+
+b) Calculate the average miles per gallon (mpg) for cars with different numbers of cylinders (cyl).
+(either add the column to the mtcars dataframe or make a new data frame with this information)
+
+
+```{r}
+# Calculate the average mpg for cars with different numbers of cylinders
+avg_mpg_by_cyl <- mtcars %>%  group_by(cyl) %>% summarise(avg_mph = mean(mpg))
+```
+
+c) Create a bar plot to show the average miles per gallon (mpg) for cars with different numbers of cylinders (cyl)
+```{r}
+# Create a bar plot of average mpg by number of cylinders
+ggplot(avg_mpg_by_cyl, aes(x = factor(cyl), y = avg_mph, fill=factor(cyl))) +
+  geom_bar(stat = "identity", width = 0.5)+
+  labs(x = "Number of Cylinders", y = "Average Miles per Gallon", title = "Average MPG by Number of Cylinders")
+```
+
+
+d) Create a new column called "Weight_Per_Horsepower" in the dataset. Calculate this ratio as the weight (wt) divided by the horsepower (hp) for each car. Find the car with the lowest weight-to-horsepower ratio and the car with the highest ratio. 
+print their "Weight_Per_Horsepower" value in the sentance : 
+"the lowest ratio is <lowest ratio> and the highest ratio is <highest ratio>.".
+
+```{r}
+mtcars$Weight_Per_Horsepower <- mtcars$wt / mtcars$hp
+
+# Find car with the lowest and highest ratio
+lowest_ratio_car <- mtcars[which.min(mtcars$Weight_Per_Horsepower), ]
+highest_ratio_car <- mtcars[which.max(mtcars$Weight_Per_Horsepower), ]
+
+lowest_ratio_car
+highest_ratio_car
+
+```
+
+e) You have calculated the "Weight_Per_Horsepower" column, which represents the weight-to-horsepower ratio for each car in the dataset. Now, let's visualize how this ratio varies across different car manufacturers.
+
+Task: Create a bar plot that shows the "Weight_Per_Horsepower" ratio for each car manufacturer (rownames). Each bar on the plot should represent a car manufacturer, and the height of the bar should correspond to the average "Weight_Per_Horsepower" ratio for cars from that manufacturer.
+```{r}
+
+ggplot(mtcars, aes(x = rownames(mtcars), y = Weight_Per_Horsepower)) +
+  geom_bar(stat = "identity", fill = "blue") +
+  labs(x = "Car Manufacturer", y = "Weight-to-Horsepower Ratio", title = "Weight-to-Horsepower Ratio by Car Manufacturer") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+### Question 3
+read the built in data set "airquality" :
+```{r}
+data(airquality)
+```
+
+The "airquality" dataset in R contains air quality measurements, including ozone concentration (Ozone), temperature (Temp), wind speed (Wind), solar radiation (Solar.R), and more, recorded in New York City over a period of time.
+
+## 3.a
+Calculate the maximum daily temperature (Temp) recorded during each month. 
+Provide the result as a numeric vector ordered by months.
+
+```{r}
+max_temp_by_month <- numeric(length = 5)  # Initialize an empty numeric vector
+for (month in 5:9) {
+  max_temp <- max(airquality$Temp[airquality$Month == month], na.rm = TRUE)
+  max_temp_by_month[month - 4] <- max_temp  # Store the maximum temperature in the vector
+}
+names(max_temp_by_month) <- month.name[5:9]
+
+max_temp_by_month 
+
+```
+
+
+
+## 3.b
+Calculate the correlation coefficient between temperature (Temp) and solar radiation (Solar.R) for all the days in the dataset. Does the correlation suggest a significant relationship between these two variables? Provide a brief interpretation of the correlation coefficient.
+
+```{r}
+correlate <- function(Temp, Solar.R){ 
+  norm_Temp <- shapiro.test(Temp)
+  norm_Solar.R <- shapiro.test(Solar.R)
+  
+  if(norm_Temp$p.value > 0.05 & norm_Solar.R$p.value > 0.05){
+    cor <- cor.test(Temp, Solar.R, method = "pearson") 
+  }else{
+    cor <- cor.test(Temp, Solar.R, method = "spearman") 
+  }
+  return(paste("The correlation coefficient is",cor$estimate))
+}
+
+correlate(movie_stats$movie_averageTemp, movie_stats$worldwide_Solar.R)
+```
+
+
+## 3.c
+Write a function named ozone_summary that takes two arguments: "month" (a character string representing a month)
+and "threshold" (an integer representing an Ozone level threshold). The function should return a text message stating whether the average Ozone level for the specified month is above or below the given threshold.
+
+For example, calling ozone_summary("June", 40) should return "The average Ozone level in June is above 40."
+
+Hint: You can use the filter and mean functions to calculate the average Ozone level for the specified month.
+
+```{r}
+ozone_summary <- function(month, threshold) {
+  month_data <- airquality[airquality$Month == match(month, month.name), ]
+  avg_ozone <- mean(month_data$Ozone, na.rm = TRUE)
+  if (avg_ozone > threshold) {
+    result <- paste("The average Ozone level in", month, "is above", threshold, ".")
+  } else {
+    result <- paste("The average Ozone level in", month, "is below", threshold, ".")
+  }
+  
+  return(result)
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
