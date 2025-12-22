@@ -43,6 +43,29 @@ This repository contains R code snippets I wrote while learning programming in R
 - Handles input validation for numeric and integer values.
 
 
+## big_bang_analysis.R
+
+### Vector Manipulation
+- **cumulative_sum(vec):** Returns the cumulative sum of a numeric vector.
+- **count_occurrences(vec, element):** Counts how many times an element appears in a vector.
+- **rotate_vector(vec, n):** Rotates a numeric vector to the right by `n` positions (circular rotation).
+
+### Data Frame Manipulation (Iris Dataset)
+- Adds `Sepal.Area` column as product of `Sepal.Length` and `Sepal.Width`.
+- Adds `Long_Petal` column indicating whether `Petal.Length > 5`.
+- Computes counts of long-petal flowers per species.
+- Computes average `Sepal.Area` per species.
+
+### The Big Bang Theory Analysis
+- Reads `The_Big_Bang_Theory.csv` with episode-level data.
+- **Directors Analysis:** Percent stacked bar plot of directors per season; identifies dominant directors.
+- **Top Director Viewership:** Computes total U.S. viewers for top director of each season; plots changes over seasons.
+- **Overall Show Viewership:** Dot plot with LOESS smoothed line for total viewers per season; interprets trends over years.
+
+
+
+
+
 
 
 
