@@ -113,6 +113,45 @@ This repository contains R code snippets I wrote while learning programming in R
 - Prints the count of values not divisible by 5.
 
 
+## us_cities_analysis.R
+
+### Question 1: Check File and Load Data
+- Checks if `uscities.csv` exists in the working directory.
+- Reads the file and sorts cities by population in descending order.
+- Prints the top 5 cities by population.
+
+### Question 2: Match City to State
+- Function `Match_State(city_name)` returns:
+  - The state(s) a city belongs to.
+  - A message if the city is not found or input is invalid.
+- Handles cities that exist in multiple states.
+
+### Question 3: Calculate Area for Cities in Alaska
+- Adds a new column `Area = population / density`.
+- Handles zero density values (resulting in NaN).
+- Calculates the percentage of cities in Alaska with area < 100, excluding NaN values.
+
+### Question 4: Compare Population Between Two Cities
+- Function `Populated_City(city1, city2)` compares two cities.
+- Returns which city is in which state and which has the higher population.
+- Considers cities with multiple states.
+
+### Question 5: Summarize States by Population and Density
+- Groups by `state_name` and `state_id`.
+- Summarizes total population and total density per state.
+- Sorts states by total density and formats output.
+
+### Question 6: Top 5 Most Populated States
+- Selects the 5 states with the highest total population.
+- Prints state names and total population.
+
+### Question 7: City Count and Most Populated City Per State
+- Calculates:
+  - Number of cities per state
+  - Most populated city and its population
+  - Total population per state
+  - Percentage of total state population in the most populated city
+- Outputs the top 15 states sorted by the percentage contribution of their largest city.
 
 
 
