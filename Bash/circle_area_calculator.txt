@@ -1,0 +1,2 @@
+#!/bin/bash 
+awk -v pi=3.14 -v USER_INPUT=$1 'BEGIN{total_area=(pi*USER_INPUT**2); print total_area;}'

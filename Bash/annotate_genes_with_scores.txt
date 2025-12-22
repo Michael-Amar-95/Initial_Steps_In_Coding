@@ -1,0 +1,14 @@
+#!/bin/sh
+#!/bin/bash
+bedfile=$1
+dictionary=$2
+while read line;
+ do
+	gene_name=$(echo $line | awk '{print $4}')
+	d_name=$(cat $dictionary | grep $gene_name | sort | uniq | cut -f2 )
+	if [ ${#d_name} -eq 0 ] 
+	then
+		d_name='NA'
+	fi
+	echo $line | awk -v d_name="$d_name" '{print $1 "\t" $2 "\t" $3 "\t" $4 "\t" d_name "\t" $6}'
+done < $bedfile

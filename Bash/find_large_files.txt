@@ -1,0 +1,5 @@
+# !/bin/bash
+file_dir=$1
+size=$2
+suffix=$3
+find $file_dir -name "*.$suffix" -size +$size;
