@@ -62,6 +62,26 @@ This repository contains R code snippets I wrote while learning programming in R
 - **Top Director Viewership:** Computes total U.S. viewers for top director of each season; plots changes over seasons.
 - **Overall Show Viewership:** Dot plot with LOESS smoothed line for total viewers per season; interprets trends over years.
 
+## palindrome_mtcars_airquality_analysis.R
+
+### Question 1: Palindrome Checker
+- **is_palindrome(text):** Checks whether a given text is a palindrome.
+- Ignores spaces, punctuation, and capitalization.
+- Demonstrates string manipulation and logical checks.
+
+### Question 2: MTCars Dataset Analysis
+- Loads the built-in `mtcars` dataset with 32 cars and 11 variables.
+- **2.a:** Scatter plot of `cyl` vs `mpg` faceted by `gear`.
+- **2.b:** Calculate average `mpg` for each cylinder count.
+- **2.c:** Bar plot showing average `mpg` by number of cylinders.
+- **2.d:** Add `Weight_Per_Horsepower` column, find cars with lowest and highest ratio.
+- **2.e:** Bar plot of `Weight_Per_Horsepower` per car manufacturer.
+
+### Question 3: Air Quality Dataset Analysis
+- Loads the built-in `airquality` dataset (measurements in NYC).
+- **3.a:** Maximum daily temperature for each month (May–September).
+- **3.b:** Correlation coefficient between `Temp` and `Solar.R`.
+- **3.c:** `ozone_summary(month, threshold)` function to check if average Ozone exceeds a threshold.
 
 
 
