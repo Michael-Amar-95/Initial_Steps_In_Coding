@@ -1,5 +1,3 @@
-########### EX1 ##########
-
 ##### Q1 ######
 # Trees data
 lengths <- c(2.2, 2.1, 2.7, 3.0, 3.1, 2.5, 1.9, 1.1, 3.5, 2.9) 
@@ -50,4 +48,5 @@ print(vec1)
 
 NOT_div_by_5 <- vec1[vec1 %% 5 != 0]
 print(NOT_div_by_5)
+
 cat(length(NOT_div_by_5), "values in vec1 aren`t divided by 5", sep = " ")
