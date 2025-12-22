@@ -84,6 +84,34 @@ This repository contains R code snippets I wrote while learning programming in R
 - **3.c:** `ozone_summary(month, threshold)` function to check if average Ozone exceeds a threshold.
 
 
+## tree_analysis.R
+
+### Question 1: Trees Volume
+- Calculates the volume of trees given vectors of `lengths`, `widths`, and `heights`.
+- `Trees_Volume <- lengths * widths * heights`
+
+### Question 2: Average Tree Volume
+- Calculates the average volume of all trees using `mean(Trees_Volume)`.
+
+### Question 3: Short Trees
+- Creates a vector of tree heights less than 2.5 meters.
+
+### Question 4: Medium Trees
+- Creates a vector of tree heights between 5 and 9 meters.
+
+### Question 5: Trees Taller than LeBron James
+- Identifies trees taller than 2.03 meters.
+- Counts the number of such trees and prints a message.
+
+### Question 6: Numbers from 1 to 60
+- Creates a vector `sixty_numbers` containing numbers from 1 to 60.
+- Filters numbers divisible by both 2 and 3.
+
+### Question 7: Transform Numbers and Filter
+- Multiplies each number in `sixty_numbers` by 3 and adds 3.
+- Filters numbers not divisible by 5.
+- Prints the count of values not divisible by 5.
+
 
 
 
