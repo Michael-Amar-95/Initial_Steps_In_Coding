@@ -1,9 +1,3 @@
----
-title: "R.test23A"
-output: html_document
-editor_options: 
-chunk_output_type: console
----
 *Instructions:*
 Please read all of the instructions before you start solving.
 
@@ -262,4 +256,5 @@ correlate <- function(rating, gross){
 
 correlate(movie_stats$movie_averageRating, movie_stats$worldwide_gross)
 ```
+
 
