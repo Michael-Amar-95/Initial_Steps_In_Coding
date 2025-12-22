@@ -23,22 +23,26 @@ This repository contains R code snippets I wrote while learning programming in R
 
 ## basic_r_exercises.R
 
-***Factorial Calculation***
+
+### Factorial Calculation
 - Function `factorial_fuc(number)` computes the factorial of a given non-negative integer.
 - Handles edge case for `0!` and validates input.
 
-***Finding Minimum in a Vector***
+### Finding Minimum in a Vector
 - Filters numeric values from a mixed vector.
 - Function `find_min_value(numeric_vec)` returns the smallest number.
 
-***Blood Pressure Analysis***
+### Blood Pressure Analysis
 - Vectors `names` and `Blood_Pres` (blood pressure values).
 - Function `deviates_more_than_10(names, Blood_Pres)` returns names whose values deviate more than ±10% from the average.
 - Performs input validation: length, numeric values, uniqueness, positivity.
 
-***Prime Number Checks***
+### Prime Number Checks
 - Function `is_a_prime_num(val)` checks if a number is prime.
 - Function `all_prime_numbers(num)` returns all primes up to a given number.
 - Handles input validation for numeric and integer values.
+
+
+
 
 
