@@ -1,10 +1,3 @@
----
-title: "R_test_2024_A"
-author: "Shai Dulberg & Michael Monsonego"
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
 ```{r}
 library(ggplot2)
 library(tidyverse)
@@ -287,3 +280,4 @@ ggplot(season_viewership, aes(x = Season, y = total_viewers)) +
 
 print("Its seems like the show reach his top in the 9 season and after it start to decreae. Before season 9, there was a little decrease between season 3 and 4 but then it continue to increae. Intresting to see is that the gradient is in increasing magnitude to season 8 but then it start to decreae. So in some way the show reach is top potential after season 8")
 ```
+
