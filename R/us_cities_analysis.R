@@ -1,8 +1,6 @@
 library(dplyr)
 library(scales)
 
-########### EX3 ##########
-
 ##### Q1 ######
 
 #Check if a specific file exists in the current directory
@@ -245,4 +243,5 @@ ex7 <- city_count_per_state %>%
 
 # Print the first 15 rows
 print(head(ex7, 15))
+
 
