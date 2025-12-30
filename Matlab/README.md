@@ -624,7 +624,7 @@ A MATLAB script that simulates population growth for multiple initial population
 - Demonstrates iterative population simulation and comparison with logistic growth in MATLAB.  
 - Useful for visualizing population dynamics for multiple initial conditions.
 
-
+---
 
 ### 37. EstimateAsymptoticConvergence (MATLAB)
 
@@ -648,6 +648,7 @@ A MATLAB function that estimates the steady-state (asymptotic) value of a 1D arr
 - Provides a robust method to estimate steady-state values in time series or iterative processes.  
 - Useful for analyzing convergence behavior in noisy or fluctuating data.
 
+---
 
 ### 38. NoisyLogisticAsymptoticPlot (MATLAB)
 
@@ -667,6 +668,7 @@ A MATLAB script that adds noise to a logistic growth curve and estimates its asy
 - Illustrates asymptotic value estimation with iterative convergence and visualization in MATLAB.  
 - Useful for analyzing steady-state behavior in noisy experimental or simulated data.
 
+---
 
 ### 39. ComputeMeanAndStdStruct (MATLAB)
 
@@ -686,6 +688,8 @@ A MATLAB function that computes the mean and standard deviation of a matrix alon
 - Provides a structured way to store both the central tendency and variability of data.  
 - Useful for statistical analysis of matrices in MATLAB.
 
+---
+
 ### 40. NormalStructDemo (MATLAB)
 
 A MATLAB script that demonstrates the use of the `ComputeMeanAndStdStruct` function for computing mean and standard deviation along different dimensions of a matrix.
@@ -700,6 +704,8 @@ A MATLAB script that demonstrates the use of the `ComputeMeanAndStdStruct` funct
 **Purpose:**  
 - Demonstrates how to use a struct to organize statistical information.  
 - Useful for analyzing matrix data along different dimensions in MATLAB.
+
+---
 
 ### 41. LogisticPopulationFromStruct (MATLAB)
 
@@ -724,6 +730,8 @@ A MATLAB function that calculates logistic population growth using parameters st
 - Demonstrates structured input for population modeling.  
 - Useful for simulating logistic growth with multiple initial populations and parameter sets in MATLAB.
 
+---
+
 ### 42. CompareStructAndArgsLogistic (MATLAB)
 
 A MATLAB script that compares logistic population growth computed from a struct versus direct function arguments.
@@ -744,6 +752,8 @@ A MATLAB script that compares logistic population growth computed from a struct 
 **Purpose:**  
 - Validates that the logistic growth calculation from a structured input produces identical results to the function using direct arguments.  
 - Useful for testing and verifying consistency in MATLAB simulations.
+
+---
 
 ### 43. TurtleDataStructFromExcel (MATLAB)
 
@@ -766,6 +776,7 @@ A MATLAB function that processes turtle data from an Excel file and organizes it
 - Provides a structured and clean representation of turtle demographic data.  
 - Facilitates plotting, analysis, and modeling of survival, fertility, and death rates in MATLAB.
 
+---
 
 ### 44. LoadAndProcessTurtleData (MATLAB)
 
@@ -784,7 +795,7 @@ A MATLAB script that reads turtle demographic data from an Excel file and stores
 - Converts raw Excel turtle data into a clean, structured MATLAB format.  
 - Facilitates subsequent analysis, plotting, and modeling of survival and fertility across different turtle scenarios.
 
-
+---
 
 ### 45. PopulationSimulationStruct (MATLAB)
 
@@ -805,6 +816,7 @@ A MATLAB function that simulates population growth over multiple generations usi
 - Demonstrates iterative population growth simulation using structured input.  
 - Useful for modeling multiple populations and comparing their dynamics over time in MATLAB.
 
+---
 
 ### 46. PopulationHeatMapPlot (MATLAB)
 
@@ -829,6 +841,7 @@ A MATLAB function that visualizes population growth across generations as a heat
 - Provides a visual overview of how different initial populations evolve over generations.  
 - Useful for analyzing growth dynamics and identifying patterns in population simulations using MATLAB.
 
+---
 
 ### 47. SimulateAndPlotPopulationHeatMap (MATLAB)
 
@@ -846,6 +859,8 @@ A MATLAB script that simulates population growth and visualizes it as a heat map
 **Purpose:**  
 - Demonstrates the full workflow of simulating population dynamics for multiple initial populations.  
 - Provides a visual representation of how populations evolve over generations, highlighting growth patterns and saturation effects.
+
+---
 
 ### 48. InsertArraySegment (MATLAB)
 
@@ -866,6 +881,7 @@ A MATLAB function that inserts one array into another at a specified position.
 - Provides a simple way to insert a segment of one array into another.  
 - Useful for manipulating numeric arrays or sequences in MATLAB.
 
+---
 
 ### 49. InsertAndPlotArraySegment (MATLAB)
 
