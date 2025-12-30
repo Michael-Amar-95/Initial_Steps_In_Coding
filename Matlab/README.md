@@ -105,7 +105,7 @@ A MATLAB script that calculates bacterial growth using a logistic growth functio
 - Defines input parameters: number of days, division time, bacterial size, initial count (`n0`), growth factor (`lamda`), and carrying capacity.  
 - Converts days into minutes and calculates the volume of a single bacterium.  
 - Calculates the number of generations based on division time.  
-- Uses the function `ex3_1logistic` to compute bacterial growth following a logistic model.  
+- Uses the function `LogisticPopulationModel` to compute bacterial growth following a logistic model.  
 - Computes the total volume of bacteria and converts it to cubic kilometers.  
 - Performs the calculation for two durations: 2 days and 0.5 days.  
 
@@ -147,12 +147,12 @@ A MATLAB script that demonstrates array duplication and element-wise difference 
 
 **What it does:**  
 - Creates an initial array `var0`.  
-- Uses the function `ex3_2dup` to duplicate each element in the array, creating `var_dup`.  
+- Uses the function `DuplicateArrayValues` to duplicate each element in the array, creating `var_dup`.  
 - Extracts the original and duplicated elements into separate arrays `var1` (even indices) and `var2` (odd indices).  
 - Computes the differences between the original array `var0` and the two extracted arrays (`dif1` and `dif2`).  
 
 **Purpose:**  
-- Demonstrates function usage (`ex3_2dup`), array indexing, and element-wise arithmetic in MATLAB.  
+- Demonstrates function usage (`DuplicateArrayValues`), array indexing, and element-wise arithmetic in MATLAB.  
 - Useful for understanding how to manipulate arrays and analyze differences between original and duplicated data.
 
 
@@ -177,9 +177,9 @@ A MATLAB script that simulates population growth over multiple generations and c
 **What it does:**  
 - Defines initial population `n_0`, carrying capacity `capacity`, growth factor `lamda`, and total generations `Generations`.  
 - Initializes an array `Nsim` to store population size at each generation.  
-- Calculates the population for each generation iteratively using the function `ex3_3next`.  
+- Calculates the population for each generation iteratively using the function `NextGenerationPopulation`.  
 - Creates an array of generation steps (`array_steps`) and plots the iterative population growth.  
-- Computes the population using the logistic formula `ex3_1logistic` on a finer grid (`array_steps2`).  
+- Computes the population using the logistic formula `LogisticPopulationModel` on a finer grid (`array_steps2`).  
 - Adds the logistic formula plot to the same figure for comparison.  
 
 **Purpose:**  
@@ -246,7 +246,7 @@ A MATLAB script that visualizes the yield of a chemical reaction under different
 
 **What it does:**  
 - Creates a figure with 4 subplots arranged in a 2x2 grid.  
-- Generates an array `V` of 20 volumes and calculates reaction yield using `ex4_3react`.  
+- Generates an array `V` of 20 volumes and calculates reaction yield using `ReactionYieldCalculatorFunction`.  
 - Plots yield versus volume in both linear (`subplot 1`) and log-log (`subplot 3`) scales.  
 - Defines a scalar volume `Volume = 2` and an array of reactant masses `Grams`.  
 - Calculates the yield and plots it versus reactant mass in linear (`subplot 2`) and log-log (`subplot 4`) scales.  
@@ -335,10 +335,10 @@ A MATLAB script that simulates population growth for multiple initial population
 **What it does:**  
 - Defines an array of initial populations `n_0`, carrying capacity `capacity`, growth factor `lamda`, and total number of generations `Generations`.  
 - Initializes a matrix `Nsim` to store population values for each generation and each initial population.  
-- Computes population at each generation iteratively using the function `ex5_4next`.  
+- Computes population at each generation iteratively using the function `NextGenerationArray`.  
 - Creates a linear array `array_steps` for plotting generations.  
 - Plots the iterative population growth using dashed lines with markers (`'--o'`).  
-- Computes population using the logistic formula `ex5_3logistic` on a finer grid (`array_steps2`).  
+- Computes population using the logistic formula `LogisticGrowthMatrix` on a finer grid (`array_steps2`).  
 - Adds the logistic formula plot to the same figure for comparison.  
 - Adds labels for the x-axis (`Generation`) and y-axis (`Number of Organisms`).  
 
@@ -365,16 +365,16 @@ A MATLAB function that selects random indices from an array based on given proba
 
 ### 23. RandomSelectionDemo (MATLAB)
 
-A MATLAB script that demonstrates the use of the `ex6_1choose` function for probabilistic selection.
+A MATLAB script that demonstrates the use of the `RandomSelectionByProbability` function for probabilistic selection.
 
 **What it does:**  
 - Creates an array `P` of 8 random values between 0 and 1.  
-- Uses the function `ex6_1choose` to select indices from `P` based on the probabilities, storing the result in `M`.  
+- Uses the function `RandomSelectionByProbability` to select indices from `P` based on the probabilities, storing the result in `M`.  
 - Performs another selection using a fixed probability `0.4` over 10,000 trials, storing the result in `N`.  
 - Displays the number of selected indices from the second selection using `length(N)`.  
 
 **Purpose:**  
-- Demonstrates how to use the probabilistic selection function `ex6_1choose`.  
+- Demonstrates how to use the probabilistic selection function `RandomSelectionByProbability`.  
 - Useful for understanding stochastic selection and random sampling in MATLAB.
 
 
@@ -399,8 +399,8 @@ A MATLAB script that imports turtle survival data from an Excel file, cleans it,
 **What it does:**  
 - Loads data from `turtles.xlsx` using `readmatrix`.  
 - Extracts columns 2, 4, and 6 corresponding to worst, average, and best survival probabilities.  
-- Uses the function `ex6_2nan` to remove any `NaN` values from the extracted columns.  
-- Saves the cleaned data (`worst_lx`, `average_lx`, `best_lx`) into a `.mat` file named `ex6_3turtels.mat`.  
+- Uses the function `RemoveNaNValues` to remove any `NaN` values from the extracted columns.  
+- Saves the cleaned data (`worst_lx`, `average_lx`, `best_lx`) into a `.mat` file named `TurtleDataImportAndSave.mat`.  
 
 **Purpose:**  
 - Demonstrates importing, cleaning, and saving data in MATLAB.  
@@ -432,10 +432,10 @@ A MATLAB script that adds noise to a logistic growth curve and estimates its asy
 
 **What it does:**  
 - Creates an array `x` with 100 values from 0 to 8.  
-- Calculates a logistic growth curve using `ex3_1logistic`.  
+- Calculates a logistic growth curve using `LogisticPopulationModel`.  
 - Generates Gaussian noise with standard deviation scaled by 2 and adds it to the logistic curve to create `ynoise`.  
 - Plots the noisy logistic data as blue points.  
-- Uses the function `ex6_4asympt` to estimate the asymptotic value (`est_k`) and noise (`est_noise`) from the noisy data.  
+- Uses the function `EstimateAsymptoticValue` to estimate the asymptotic value (`est_k`) and noise (`est_noise`) from the noisy data.  
 - Draws a green horizontal line indicating the estimated asymptotic value from the first estimation.  
 - Performs a second asymptotic estimation using the first estimate as input and plots it in black.  
 - Uses `axis tight` to fit the plot neatly.  
@@ -488,7 +488,7 @@ A MATLAB script that interactively plots reaction yield for multiple reactant ma
 - Opens a dialog box using `inputdlg` to get user inputs: reactant masses, volume range, and plot title.  
 - Converts the input strings to numeric values using `str2num`.  
 - Generates an array `Volume` with 101 points within the specified range.  
-- Calculates reaction yields for each reactant mass using the function `ex4_3react`.  
+- Calculates reaction yields for each reactant mass using the function `ReactionYieldCalculatorFunction`.  
 - Plots the yields as a function of volume, holding the figure for multiple plots.  
 - Adds a title, axis labels (`Volume`, `Product/Reactant ratio`), and a legend using the reactant mass values.  
 
@@ -539,13 +539,13 @@ A MATLAB script that visualizes survival and death rates of turtle populations f
 **What it does:**  
 - Clears the workspace and loads turtle data from `turtles.mat`.  
 - Prepares x-axis series for age and concatenates them with survival probabilities for worst, average, and best cases.  
-- Computes death rates, average death rates, and standard deviations using `ex7_4rate` for each scenario.  
+- Computes death rates, average death rates, and standard deviations using `TurtleDeathRateAnalysis` for each scenario.  
 - Prepares corresponding x-axis arrays for death rate data.  
-- Uses `ex7_4plot` to create two vertically stacked subplots for each scenario:  
+- Uses `TurtleSurvivalPlotFunction` to create two vertically stacked subplots for each scenario:  
   - **Top subplot:** survival probability versus age.  
   - **Bottom subplot:** death rate versus age.  
 - Adds legends, axis labels, and line styles to distinguish between worst (`'--b'`), average (`'-r'`), and best (`':k'`) scenarios.  
-- Uses `ex7_2num` to format average death rate and standard deviation for the legend.  
+- Uses `ConcatenateWithError` to format average death rate and standard deviation for the legend.  
 
 **Purpose:**  
 - Provides a comprehensive visualization of survival and mortality trends in turtle populations.  
@@ -582,7 +582,7 @@ A MATLAB function that simulates population growth over multiple generations for
   - `generation`: number of generations to simulate  
 - Initializes a matrix `iteams` to store population values for each generation and initial population.  
 - Sets the first row of `iteams` to the initial populations `n_0`.  
-- Iteratively calculates the population for each subsequent generation using the function `ex5_4next`.  
+- Iteratively calculates the population for each subsequent generation using the function `NextGenerationArray`.  
 - Returns the matrix `iteams` containing the population size for each generation and initial population.  
 
 **Purpose:**  
@@ -597,9 +597,9 @@ A MATLAB script that simulates population growth for multiple initial population
 
 **What it does:**  
 - Defines initial populations `n_0`, carrying capacity `capacity`, growth factor `lamda`, and number of generations `generations`.  
-- Simulates population growth over generations using the function `ex8_2simulate`, storing results in `Nsim`.  
+- Simulates population growth over generations using the function `SimulatePopulationBoom`, storing results in `Nsim`.  
 - Creates an array `array_steps` for plotting generations and plots the simulated population with dashed lines and markers (`'--o'`).  
-- Computes the population using the logistic formula `ex5_3logistic` over a finer array `array_steps2` and adds it to the same plot.  
+- Computes the population using the logistic formula `LogisticGrowthMatrix` over a finer array `array_steps2` and adds it to the same plot.  
 - Adds x-axis and y-axis labels (`Generation` and `Number of Organisms`).  
 
 **Purpose:**  
@@ -637,10 +637,10 @@ A MATLAB script that adds noise to a logistic growth curve and estimates its asy
 
 **What it does:**  
 - Creates an array `x` with 100 values from 0 to 8.  
-- Computes a logistic growth curve using `ex3_1logistic`.  
+- Computes a logistic growth curve using `LogisticPopulationModel`.  
 - Generates Gaussian noise with standard deviation scaled by 2 and adds it to the logistic curve to create `ynoise`.  
 - Plots the noisy logistic data as blue points (`'.b'`).  
-- Uses the function `ex8_3asympt` with a convergence criterion of 0.01 to estimate the asymptotic value (`est_k`) and the index where the steady phase starts.  
+- Uses the function `EstimateAsymptoticConvergence` with a convergence criterion of 0.01 to estimate the asymptotic value (`est_k`) and the index where the steady phase starts.  
 - Draws a green horizontal line from `x(idx)` to `x(end)` representing the estimated asymptotic value.  
 - Uses `axis tight` to fit the plot neatly.  
 
@@ -670,13 +670,13 @@ A MATLAB function that computes the mean and standard deviation of a matrix alon
 
 ### 40. NormalStructDemo (MATLAB)
 
-A MATLAB script that demonstrates the use of the `ex9_1normal` function for computing mean and standard deviation along different dimensions of a matrix.
+A MATLAB script that demonstrates the use of the `ComputeMeanAndStdStruct` function for computing mean and standard deviation along different dimensions of a matrix.
 
 **What it does:**  
 - Creates an array `Array` with values from 1 to 28.  
 - Reshapes `Array` into a 7x4 matrix.  
-- Calls `ex9_1normal(Array,1)` to compute the mean and standard deviation along the rows (dimension 1) and stores the result in `result1`.  
-- Calls `ex9_1normal(Array,2)` to compute the mean and standard deviation along the columns (dimension 2) and stores the result in `result2`.  
+- Calls `ComputeMeanAndStdStruct(Array,1)` to compute the mean and standard deviation along the rows (dimension 1) and stores the result in `result1`.  
+- Calls `ComputeMeanAndStdStruct(Array,2)` to compute the mean and standard deviation along the columns (dimension 2) and stores the result in `result2`.  
 - Displays the results as structs with fields `represent` (mean) and `spread` (standard deviation).  
 
 **Purpose:**  
@@ -716,8 +716,8 @@ A MATLAB script that compares logistic population growth computed from a struct 
   - `N0`: initial population sizes  
   - `K`: carrying capacity  
   - `lamda`: growth factor  
-- Computes logistic growth using `ex9_2logistic` with the struct input (`Nstruct`).  
-- Computes logistic growth using `ex5_3logistic` with direct arguments (`Nargs`).  
+- Computes logistic growth using `LogisticPopulationFromStruct` with the struct input (`Nstruct`).  
+- Computes logistic growth using `LogisticGrowthMatrix` with direct arguments (`Nargs`).  
 - Compares the two results element-wise:  
   - Creates `matrixOfLogistic` with `1` where values are equal and `0` otherwise.  
   - Aggregates column-wise using `all` to get `arrayOfLogistic`.  
@@ -740,8 +740,8 @@ A MATLAB function that processes turtle data from an Excel file and organizes it
   - `Case`: the name of the case/species derived from the column title (removing the last 3 characters)  
   - `Longevity`: a 2-column array with age (0 to N-1) and survival probabilities (removing `NaN` values)  
   - `Fertility`: the first value from the next column (representing fertility)  
-  - `deathRate`: a 2-column array with age and calculated death rates using `ex7_4rate`  
-- Converts arrays to proper column format and removes missing (`NaN`) values using `ex6_2nan`.  
+  - `deathRate`: a 2-column array with age and calculated death rates using `TurtleDeathRateAnalysis`  
+- Converts arrays to proper column format and removes missing (`NaN`) values using `RemoveNaNValues`.  
 - Returns the struct `structer` containing all relevant turtle data for analysis.  
 
 **Purpose:**  
@@ -760,7 +760,7 @@ A MATLAB script that reads turtle demographic data from an Excel file and stores
 - Prepares an empty struct template `structer` with fields: `Case`, `Longevity`, `Fertility`, `deathRate`.  
 - Creates an array `turtles` of three struct elements to store data for different turtle scenarios.  
 - Defines the columns of interest `arrayOfIndex = [2 4 6]`.  
-- Iterates through the selected columns and calls `ex9_3data` to populate each struct in `turtles` with survival, fertility, and death rate data.  
+- Iterates through the selected columns and calls `TurtleDataStructFromExcel` to populate each struct in `turtles` with survival, fertility, and death rate data.  
 
 **Purpose:**  
 - Converts raw Excel turtle data into a clean, structured MATLAB format.  
@@ -780,7 +780,7 @@ A MATLAB function that simulates population growth over multiple generations usi
   - `Generation`: number of generations to simulate  
 - Initializes a matrix `iteams` with `generation + 1` rows and `length(N0)` columns.  
 - Sets the first row of `iteams` to the initial populations `N0`.  
-- Iteratively computes the population for each subsequent generation using the function `ex5_4next`.  
+- Iteratively computes the population for each subsequent generation using the function `NextGenerationArray`.  
 - Returns the matrix `iteams` containing population sizes for each generation and initial population.  
 
 **Purpose:**  
@@ -799,7 +799,7 @@ A MATLAB function that visualizes population growth across generations as a heat
   - `lamda`: growth factor  
   - `Generation`: number of generations  
 - Takes input `generationSize`: a matrix representing population sizes for each generation.  
-- Duplicates the last row and column of `generationSize` using `ex5_2mat` to match pcolor requirements.  
+- Duplicates the last row and column of `generationSize` using `ExtendMatrixEdges` to match pcolor requirements.  
 - Sets up axes and prepares x-axis and y-axis coordinates.  
 - Plots a heat map using `pcolor` with the duplicated `generationSize` matrix.  
 - Configures color map (`jet`) and adds a colorbar legend.  
@@ -822,8 +822,8 @@ A MATLAB script that simulates population growth and visualizes it as a heat map
   - `N0`: array of initial populations `[3 6 9 12 15]`  
   - `K`: carrying capacity (60)  
   - `lamda`: growth factor (7)  
-- Calls `ex10_1simulate(params)` to simulate population growth over generations and stores the result in `Population`.  
-- Calls `ex10_2plot(params, Population)` to create a heat map of population sizes over time and stores the axes handle in `Handle`.  
+- Calls `PopulationSimulationStruct(params)` to simulate population growth over generations and stores the result in `Population`.  
+- Calls `PopulationHeatMapPlot(params, Population)` to create a heat map of population sizes over time and stores the axes handle in `Handle`.  
 
 **Purpose:**  
 - Demonstrates the full workflow of simulating population dynamics for multiple initial populations.  
@@ -858,7 +858,7 @@ A MATLAB script that demonstrates inserting an array segment into another array 
 - Computes `y = x .* sqrt(x + 4)` and plots it.  
 - Extracts the 10th element of `y` as `a`.  
 - Creates an array `A` of length 5 with all elements equal to `a`.  
-- Uses the function `exam(y, A, 10)` to insert `A` into `y` after the 10th element, resulting in array `z`.  
+- Uses the function `InsertArraySegment(y, A, 10)` to insert `A` into `y` after the 10th element, resulting in array `z`.  
 - Creates a new `t` array of length 56 (matching `z`) from 0 to 11.  
 - Plots `z` versus `t` on the same figure.  
 
