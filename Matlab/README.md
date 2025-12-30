@@ -275,6 +275,7 @@ A MATLAB script that visualizes the yield of a chemical reaction under different
 - Demonstrates the effect of volume and reactant mass on reaction yield.  
 - Illustrates the use of multiple subplots, linear and log-log plotting, and visualization of chemical equilibrium in MATLAB.
 
+---
 
 ### 17. GenerateMatrixWithSquares (MATLAB)
 
@@ -293,6 +294,8 @@ A MATLAB function that generates a 2-row matrix based on an input integer `N`.
 - Demonstrates array manipulation, reshaping, and element-wise operations in MATLAB.  
 - Useful for generating matrices with related rows for educational or computational purposes.
 
+---
+
 ### 18. ExtendMatrixEdges (MATLAB)
 
 A MATLAB function that extends a 2-row input array by adding an extra row and column.
@@ -307,6 +310,7 @@ A MATLAB function that extends a 2-row input array by adding an extra row and co
 - Demonstrates array manipulation, row and column extraction, and matrix augmentation in MATLAB.  
 - Useful for preparing matrices for boundary conditions or padding in computational tasks.
 
+---
 
 ### 19. LogisticGrowthMatrix (MATLAB)
 
@@ -327,6 +331,7 @@ A MATLAB function that calculates the logistic growth of a population over time 
 - Demonstrates logistic population growth modeling in MATLAB.  
 - Useful for simulating multiple populations over time with resource limitations.
 
+---
 
 ### 20. NextGenerationArray (MATLAB)
 
@@ -345,6 +350,7 @@ A MATLAB function that calculates the next generation population for one or more
 - Demonstrates population dynamics modeling with logistic-like growth in MATLAB.  
 - Supports array input for simulating multiple populations simultaneously.
 
+---
 
 ### 21. PopulationMatrixSimulation (MATLAB)
 
@@ -364,6 +370,7 @@ A MATLAB script that simulates population growth for multiple initial population
 - Demonstrates population dynamics simulations for multiple populations in MATLAB.  
 - Illustrates iterative versus analytical logistic growth modeling and visualization.
 
+---
 
 ### 22. RandomSelectionByProbability (MATLAB)
 
@@ -381,6 +388,8 @@ A MATLAB function that selects random indices from an array based on given proba
 - Demonstrates probabilistic selection using random numbers in MATLAB.  
 - Useful for simulations, stochastic processes, and random sampling applications.
 
+---
+
 ### 23. RandomSelectionDemo (MATLAB)
 
 A MATLAB script that demonstrates the use of the `RandomSelectionByProbability` function for probabilistic selection.
@@ -395,6 +404,7 @@ A MATLAB script that demonstrates the use of the `RandomSelectionByProbability` 
 - Demonstrates how to use the probabilistic selection function `RandomSelectionByProbability`.  
 - Useful for understanding stochastic selection and random sampling in MATLAB.
 
+---
 
 ### 24. RemoveNaNValues (MATLAB)
 
@@ -410,6 +420,8 @@ A MATLAB function that removes `NaN` values from an input array.
 - Demonstrates handling and filtering of NaN values in MATLAB arrays.  
 - Useful for data cleaning and preprocessing before analysis or plotting.
 
+---
+
 ### 25. TurtleDataImportAndSave (MATLAB)
 
 A MATLAB script that imports turtle survival data from an Excel file, cleans it, and saves it for later use.
@@ -423,6 +435,8 @@ A MATLAB script that imports turtle survival data from an Excel file, cleans it,
 **Purpose:**  
 - Demonstrates importing, cleaning, and saving data in MATLAB.  
 - Prepares turtle survival data for subsequent analysis or plotting.
+
+---
 
 ### 26. EstimateAsymptoticValue (MATLAB)
 
@@ -443,6 +457,7 @@ A MATLAB function that estimates the steady-state (asymptotic) value of a 1D arr
 - Useful for analyzing time series or iterative processes to identify steady-state behavior.  
 - Helps estimate asymptotic values and variability in experimental or simulated data.
 
+---
 
 ### 27. LogisticWithNoiseAndAsymptoticAnalysis (MATLAB)
 
@@ -463,6 +478,8 @@ A MATLAB script that adds noise to a logistic growth curve and estimates its asy
 - Illustrates asymptotic value estimation and visualization in MATLAB.  
 - Useful for analyzing steady-state behavior in noisy data.
 
+---
+
 ### 28. AppendCurrentDateToTitle (MATLAB)
 
 A MATLAB function that appends the current date to a given title, replacing dashes with spaces.
@@ -477,6 +494,8 @@ A MATLAB function that appends the current date to a given title, replacing dash
 **Purpose:**  
 - Useful for dynamically labeling plots, files, or outputs with the current date.  
 - Ensures the date format is clean and readable by replacing dashes with spaces.
+
+---
 
 ### 29. ConcatenateWithError (MATLAB)
 
@@ -496,6 +515,7 @@ A MATLAB function that concatenates a title, a value, and its associated error i
 - Useful for labeling plots, tables, or outputs with values and their errors.  
 - Provides a clear and standardized format for displaying numerical results in MATLAB.
 
+---
 
 ### 30. InteractiveReactionPlot (MATLAB)
 
@@ -514,6 +534,7 @@ A MATLAB script that interactively plots reaction yield for multiple reactant ma
 - Demonstrates interactive data input and dynamic plotting in MATLAB.  
 - Useful for visualizing how reactant mass affects reaction yield across a range of volumes.
 
+---
 
 ### 31. TurtleSurvivalPlotFunction (MATLAB)
 
@@ -534,6 +555,7 @@ A MATLAB function that plots turtle survival and death rate data in two subplots
 - Demonstrates plotting multiple related datasets in subplots.  
 - Useful for visualizing survival and mortality data or other paired datasets in MATLAB.
 
+---
 
 ### 32. TurtleDeathRateAnalysis (MATLAB)
 
@@ -549,6 +571,8 @@ A MATLAB function that calculates annual death rates for a turtle population and
 **Purpose:**  
 - Provides a quantitative analysis of mortality in turtle populations.  
 - Useful for ecological studies, population modeling, and understanding survival trends over time.
+
+---
 
 ### 33. TurtleSurvivalAndDeathRatePlots (MATLAB)
 
@@ -569,6 +593,7 @@ A MATLAB script that visualizes survival and death rates of turtle populations f
 - Provides a comprehensive visualization of survival and mortality trends in turtle populations.  
 - Demonstrates integration of multiple custom functions for ecological data analysis and plotting in MATLAB.
 
+---
 
 ### 34. SevenBoomGame (MATLAB)
 
@@ -587,6 +612,7 @@ A MATLAB function that plays the "7-boom" game, replacing certain numbers with t
 - Demonstrates conditional logic, string manipulation, and cell array usage in MATLAB.  
 - Useful for educational games or exercises involving loops and conditionals.
 
+---
 
 ### 35. SimulatePopulationBoom (MATLAB)
 
@@ -607,7 +633,7 @@ A MATLAB function that simulates population growth over multiple generations for
 - Demonstrates iterative population growth modeling for multiple initial conditions.  
 - Useful for simulating population dynamics and comparing with logistic growth models in MATLAB.
 
-
+---
 
 ### 36. PopulationSimulationBoom (MATLAB)
 
