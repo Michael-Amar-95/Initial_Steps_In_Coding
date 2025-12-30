@@ -84,6 +84,7 @@ A MATLAB script that calculates the yield of a chemical reaction as a function o
 - Demonstrates chemical equilibrium calculations in MATLAB.  
 - Illustrates the use of arrays, element-wise operations, quadratic equations, and plotting in a chemical context.
 
+---
 
 ### 6. TurtleSurvivalAnalysis (MATLAB)
 
@@ -101,6 +102,7 @@ A MATLAB script that analyzes turtle survival data and calculates the average li
 - Demonstrates survival analysis using life table data.  
 - Illustrates array operations, differences between consecutive elements, and weighted averaging in MATLAB.
 
+---
 
 ### 7. BacteriaGrowthLogistic (MATLAB)
 
@@ -118,6 +120,7 @@ A MATLAB script that calculates bacterial growth using a logistic growth functio
 - Demonstrates logistic growth modeling in MATLAB.  
 - Illustrates function usage, array operations, and unit conversions in a biological context.
 
+---
 
 ### 8. LogisticPopulationModel (MATLAB)
 
@@ -132,6 +135,7 @@ A MATLAB function that calculates population size using a logistic growth model.
 - Demonstrates the implementation of a logistic population growth model in MATLAB.  
 - Designed to be used as a helper function for biological growth simulations with limited resources.
 
+---
 
 ### 9. DuplicateArrayValues (MATLAB)
 
@@ -145,6 +149,7 @@ A MATLAB function that duplicates the values in a given array.
 **Purpose:**  
 - Useful for replicating elements in arrays for data processing or simulations.  
 
+---
 
 ### 10. ArrayDuplicationAndDifference (MATLAB)
 
@@ -160,6 +165,7 @@ A MATLAB script that demonstrates array duplication and element-wise difference 
 - Demonstrates function usage (`DuplicateArrayValues`), array indexing, and element-wise arithmetic in MATLAB.  
 - Useful for understanding how to manipulate arrays and analyze differences between original and duplicated data.
 
+---
 
 ### 11. NextGenerationPopulation (MATLAB)
 
@@ -174,6 +180,7 @@ A MATLAB function that calculates the population size in the next generation usi
 - Demonstrates modeling of population dynamics in MATLAB.  
 - Useful for simulations of population growth with resource limitations and logistic-like adjustments.
 
+---
 
 ### 12. PopulationSimulationPlot (MATLAB)
 
@@ -191,6 +198,7 @@ A MATLAB script that simulates population growth over multiple generations and c
 - Demonstrates population dynamics simulation in MATLAB.  
 - Illustrates iterative calculations, function usage, plotting, and comparison with analytical models.
 
+---
 
 ### 13. BirthDataPlot (MATLAB)
 
@@ -208,6 +216,8 @@ A MATLAB script that reads birth data from an Excel file, applies running averag
 **Purpose:**  
 - Demonstrates data import, basic plotting, running average smoothing, and visualization in MATLAB.  
 - Useful for analyzing trends in time series data.
+
+---
 
 ### 14. TurtleSurvivalPlot (MATLAB)
 
@@ -228,6 +238,8 @@ A MATLAB script that visualizes turtle survival data with multiple coordinate sy
 - Illustrates survival and mortality patterns in turtles.  
 - Useful for comparing different survival scenarios in ecological studies.
 
+---
+
 ### 15. ReactionYieldCalculatorFunction (MATLAB)
 
 A MATLAB function that calculates the yield of a chemical reaction based on reactant mass and volume.
@@ -244,6 +256,7 @@ A MATLAB function that calculates the yield of a chemical reaction based on reac
 - Provides a reusable function to model chemical equilibrium and reaction yield in MATLAB.  
 - Useful for simulations and plotting the effect of reactant mass and reactor volume on product yield.
 
+---
 
 ### 16. ReactionYieldPlots (MATLAB)
 
