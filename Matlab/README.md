@@ -11,6 +11,7 @@ A MATLAB script that calculates the product of two loaded scalar values and save
 **Purpose:**  
 - Demonstrates basic MATLAB operations: loading `.mat` files, performing arithmetic, and saving variables to a new `.mat` file.
 
+---
 
 ### 2. BacteriaGrowthSimulator (MATLAB)
 
@@ -27,6 +28,7 @@ A MATLAB script that calculates bacterial growth over time and estimates the tot
 - Demonstrates basic biological modeling in MATLAB.  
 - Illustrates growth calculations, logistic growth, unit conversions, and basic arithmetic operations.  
 
+---
 
 ### 3. InterestApproximation (MATLAB)
 
@@ -42,6 +44,8 @@ A MATLAB script that compares the exact and approximate cumulative growth for re
 **Purpose:**  
 - Demonstrates the difference between exact compound growth and a linear approximation.  
 - Useful for teaching small-rate approximations and error estimation in MATLAB.
+
+---
 
 ### 4. ArrayManipulations (MATLAB)
 
@@ -61,6 +65,7 @@ A MATLAB script that demonstrates basic array operations and element-wise comput
 - Illustrates MATLAB array indexing, assignment, subarray creation, element-wise operations, and deletion of elements.  
 - Useful for practicing manipulation of vectors and basic arithmetic operations.
 
+---
 
 ### 5. ReactionYieldCalculator (MATLAB)
 
